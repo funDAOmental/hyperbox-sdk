@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Hyperbox Protocol SDK",
   "main": "src/index.js",
+  "types": "src/index",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
