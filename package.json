@@ -10,6 +10,8 @@
   "author": "funDAOmental",
   "license": "MIT",
   "dependencies": {
+    "events": "^3.3.0",
+    "messagepack": "^1.1.12",
     "nanoid": "^4.0.2"
   }
 }
