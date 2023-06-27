@@ -1,3 +1,5 @@
+export * from './core/documents/QuestMetadataDoc'
+export * from './core/documents/QuestMessagesDoc'
 export * from './core/merge/crdt-types'
 export * from './core/merge/kernal-changes'
 export * from './core/merge/kernal'

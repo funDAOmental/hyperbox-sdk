@@ -89,6 +89,7 @@ class Store {
   }
 
   getDocument(type, id) {
+    if (id == null) return null
     return this.collections[type]?.[id] ?? null
   }
 
@@ -97,6 +98,7 @@ class Store {
   }
 
   hasDocument(type, id) {
+    if (id == null) return false
     return this.collections[type]?.[id] !== undefined
   }
 
@@ -106,6 +108,17 @@ class Store {
 
   getIds(type) {
     return Object.keys(this.collections[type] ?? {})
+  }
+
+  upsertDocument(type, id, newData) {
+    if (id == null) return null
+    let data = this.getDocument(type, id) ?? {}
+    data = {
+      ...data,
+      ...newData,
+    }
+    this.setDocument(type, id, data)
+    return data
   }
 
   on(options, listener) {
