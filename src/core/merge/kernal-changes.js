@@ -1,4 +1,4 @@
-import { typeDefs } from './crdt-types'
+import { typeDefs } from '../merge/index.js'
 
 class KernalChanges {
   changes = {}

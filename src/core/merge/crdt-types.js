@@ -1,5 +1,4 @@
-import { deepCopy } from "../utils/utils"
-import { types } from "./types"
+import { deepCopy } from '../utils/index.js'
 
 export const getPrimitive = (value) => {
   if (value === null) {
@@ -123,4 +122,5 @@ export const createTypeMetadata = (type) => {
 //---------------------------------
 // type defs
 //
+import { types } from './types.js'
 export const typeDefs = Object.keys(types).reduce((result, key) => ({ ...result, [key]: createTypeMetadata(types[key]) }), {})

@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Hyperbox Protocol SDK",
   "main": "src/index.js",
-  "types": "src/index",
+  "types": "src/index.d.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,5 +15,8 @@
     "messagepack": "^1.1.12",
     "nanoid": "^4.0.2",
     "react": "^18.2.0"
+  },
+  "engines": {
+    "node": ">=16.14.0"
   }
 }

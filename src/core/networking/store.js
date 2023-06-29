@@ -1,7 +1,9 @@
 import EventEmitter from 'events'
-import { typeDefs } from '../merge/crdt-types'
-import { setValueAtPath } from '../merge/tiny-merge'
-import { deepCopy } from '../utils/utils'
+import { deepCopy } from '../utils/index.js'
+import {
+  typeDefs,
+  setValueAtPath,
+} from '../merge/index.js'
 
 class Store {
   collections = {}

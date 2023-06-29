@@ -1,10 +1,16 @@
 import EventEmitter from 'events'
-import { Kernal } from '../merge/kernal'
-import { createOp } from '../merge/tiny-merge'
-import { createMessage } from '../merge/messages'
-import { typeDefs } from '../merge/crdt-types'
-import { getAgentId, getSnapshot, setSnapshot } from './persistence'
-import { Client, LocalClient } from './client'
+import {
+  Client, LocalClient,
+  getAgentId,
+  getSnapshot,
+  setSnapshot,
+} from '../networking/index.js'
+import {
+  Kernal,
+  createOp,
+  createMessage,
+  typeDefs,
+} from '../merge/index.js'
 
 class ClientRoom extends EventEmitter {
   constructor(uri, {
@@ -45,7 +51,7 @@ class ClientRoom extends EventEmitter {
 
     this.client = isLocal ? new LocalClient() : new Client({
       uri: this.uri + '/api/room/' + this.slug + '/websocket',
-    }, this.kernal )
+    }, this.kernal)
 
     this.client.addListener('open', this.handleOpen)
     this.client.addListener('close', this.handleClose)

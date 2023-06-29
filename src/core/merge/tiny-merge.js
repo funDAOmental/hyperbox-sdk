@@ -1,5 +1,5 @@
-import { typeDefs } from './crdt-types'
-import { deepCopy } from '../utils/utils'
+import { typeDefs } from '../merge/index.js'
+import { deepCopy } from '../utils/index.js'
 
 export const getParentPathIndex = (typeDef, crdt, pathIndex) => {
   const currentIndices = typeDef.parentIndices[pathIndex]

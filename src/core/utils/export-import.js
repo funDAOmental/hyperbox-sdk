@@ -1,4 +1,4 @@
-import { typeDefs } from '../merge/crdt-types'
+import { typeDefs } from '../merge/index.js'
 
 export const isCrdtData = (data) => {
   if (!Array.isArray(data) || data.length == 0) {

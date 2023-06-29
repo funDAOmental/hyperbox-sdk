@@ -1,8 +1,10 @@
 import EventEmitter from 'events'
 import { encode, decode } from 'messagepack'
-import { createMessage } from '../merge/messages'
-import { throttle } from '../utils/utils'
-import { KernalChanges } from '../merge/kernal-changes'
+import { throttle } from '../utils/index.js'
+import {
+  createMessage,
+  KernalChanges,
+} from '../merge/index.js'
 
 const isBrowser = typeof window !== 'undefined'
 

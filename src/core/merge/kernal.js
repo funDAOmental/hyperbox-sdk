@@ -1,11 +1,11 @@
-import { deepCopy } from '../utils/utils'
-import { typeDefs } from './crdt-types'
+import { deepCopy } from '../utils/index.js'
 import {
+  typeDefs,
   applyOp,
   createOp,
   getValueAtPath,
   getParentPathIndex,
-} from './tiny-merge'
+} from '../merge/index.js'
 
 class Kernal {
   collections = {}
