@@ -13,6 +13,7 @@
   "dependencies": {
     "events": "^3.3.0",
     "messagepack": "^1.1.12",
-    "nanoid": "^4.0.2"
+    "nanoid": "^4.0.2",
+    "react": "^18.2.0"
   }
 }
