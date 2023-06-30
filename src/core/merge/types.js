@@ -200,11 +200,12 @@ export const questAgent = {
   description: 'description',
 }
 // key: 'timestamp', from Date.now()
-export const questMessages = {
-  realm: 'number',    // realm number > questRealm
-  chamber: 'string',  // chamber slug > questChamber, questAgent
-  player: 'string',   // player wallet address on MUD
-  messages: 'string', // serialized OpenAI messages array
+export const questEncounter = {
+  realmCoord: 'number',   // realm number > questRealm
+  chamberSlug: 'string',  // chamber slug > questChamber, questAgent
+  playerName: 'string',   // player wallet address on MUD
+  agentName: 'string',    // player wallet address on MUD
+  history: 'string',      // serialized OpenAI messages array
 }
 
 
@@ -244,7 +245,7 @@ export const types = {
   questRealm: questRealm,
   questChamber: questChamber,
   questAgent: questAgent,
-  questMessages: questMessages,
+  questEncounter: questEncounter,
   // deprecated
   map: map,
   book: book,

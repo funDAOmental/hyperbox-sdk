@@ -1,2 +1,2 @@
 export * from './QuestMetadataDoc.js'
-export * from './QuestMessagesDoc.js'
+export * from './QuestEncounterDoc.js'
