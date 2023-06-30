@@ -28,7 +28,7 @@ class QuestEncounterDoc {
     const ids = store.getIds(QuestEncounterDoc.type)
     for (const id of ids) {
       const doc = store.getDocument(QuestEncounterDoc.type, id)
-      if (doc && doc.chamberSlug == chamberSlug && (doc.realm == parseInt(realmCoord) || realmCoord === null)) {
+      if (doc && doc.chamberSlug == chamberSlug && (doc.realmCoord == parseInt(realmCoord) || realmCoord === null)) {
         result[id] = {...doc}
       }
     }
