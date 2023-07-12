@@ -55,3 +55,23 @@ export const deepMerge = (target, ...sources) => {
   }
   return deepMerge(target, ...sources);
 }
+
+export function decodeBase64(data) {
+  return Buffer.from(data, 'base64').toString('utf8')
+}
+export function decodeBase64Buffer(data) {
+  return Buffer.from(data, 'base64')
+}
+export function encodeBase64(data, options = {}) {
+  let result = null
+  if (data != null) {
+    result = ''
+    if (options.svg) {
+      result += 'data:image/svg+xml;base64,'
+    } else if (options.html) {
+      result += 'data:text/html;base64,'
+    }
+    result += Buffer.from(data).toString('base64')
+  }
+  return result
+}
