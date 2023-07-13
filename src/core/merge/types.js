@@ -146,6 +146,7 @@ export const screen = {
     y: 'number',
     z: 'number',
   },
+  img: 'string', // optional image preview url
 }
 
 // key: 'world' or document id (nanoid)
