@@ -6,15 +6,15 @@
 
 class QuestMetadataDocBase {
 
-  static normalizeChamberSlug(chamberSlug) {
-    // Remove default separator
-    return chamberSlug.replace(',', '')
+  static normalizeChamberSlug(slug) {
+    // Remove default separator, is present
+    return slug.replace(',', '')
   }
 
-  static updateMetadata(store, type, chamberSlug, metadata) {
-    const _slug = this.normalizeChamberSlug(chamberSlug)
-    console.log(`QuestMetadataDocBase.updateMetadata() [${type}]`, _slug, metadata)
-    store.upsertDocument(type, _slug, {
+  static updateMetadata(store, type, slug_or_coord, metadata) {
+    const _key = this.normalizeChamberSlug(slug_or_coord)
+    console.log(`QuestMetadataDocBase.updateMetadata() [${type}]`, _key, metadata)
+    store.upsertDocument(type, _key, {
       metadata: JSON.stringify(metadata),
       name: metadata?.name ?? null,
       description: metadata?.description ?? null,
@@ -31,29 +31,32 @@ class QuestMetadataDocBase {
 }
 
 class QuestRealmDoc extends QuestMetadataDocBase {
+  static type = 'questRealm'
   static updateMetadata(store, chamberSlug, metadata) {
-    super.updateMetadata(store, 'questRealm', chamberSlug, metadata)
+    super.updateMetadata(store, QuestRealmDoc.type, chamberSlug, metadata)
   }
   static updateArtUrl(store, chamberSlug, artUrl) {
-    super.updateArtUrl(store, 'questRealm', chamberSlug, artUrl)
+    super.updateArtUrl(store, QuestRealmDoc.type, chamberSlug, artUrl)
   }
 }
 
 class QuestChamberDoc extends QuestMetadataDocBase {
+  static type = 'questChamber'
   static updateMetadata(store, chamberSlug, metadata) {
-    super.updateMetadata(store, 'questChamber', chamberSlug, metadata)
+    super.updateMetadata(store, QuestChamberDoc.type, chamberSlug, metadata)
   }
   static updateArtUrl(store, chamberSlug, artUrl) {
-    super.updateArtUrl(store, 'questChamber', chamberSlug, artUrl)
+    super.updateArtUrl(store, QuestChamberDoc.type, chamberSlug, artUrl)
   }
 }
 
 class QuestAgentDoc extends QuestMetadataDocBase {
+  static type = 'questAgent'
   static updateMetadata(store, chamberSlug, metadata) {
-    super.updateMetadata(store, 'questAgent', chamberSlug, metadata)
+    super.updateMetadata(store, QuestAgentDoc.type, chamberSlug, metadata)
   }
   static updateArtUrl(store, chamberSlug, artUrl) {
-    super.updateArtUrl(store, 'questAgent', chamberSlug, artUrl)
+    super.updateArtUrl(store, QuestAgentDoc.type, chamberSlug, artUrl)
   }
 }
 
