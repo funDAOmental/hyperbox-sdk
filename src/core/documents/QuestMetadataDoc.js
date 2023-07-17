@@ -6,25 +6,23 @@
 
 class QuestMetadataDocBase {
 
-  static normalizeChamberSlug(slug) {
-    // Remove default separator, is present
-    return slug.replace(',', '')
+  static makeChamberKey(realmCoord, chamberSlug) {
+    if (!realmCoord || !chamberSlug) return null
+    return `${realmCoord.toString()}-${chamberSlug.replace(',', '') }`
   }
 
-  static updateMetadata(store, type, slug_or_coord, metadata) {
-    const _key = this.normalizeChamberSlug(slug_or_coord)
-    console.log(`QuestMetadataDocBase.updateMetadata() [${type}]`, _key, metadata)
-    store.upsertDocument(type, _key, {
+  static updateMetadata(store, type, key, metadata) {
+    console.log(`QuestMetadataDocBase.updateMetadata() [${type}]`, key, metadata)
+    store.upsertDocument(type, key, {
       metadata: JSON.stringify(metadata),
       name: metadata?.name ?? null,
       description: metadata?.description ?? null,
     })
   }
 
-  static updateArtUrl(store, type, chamberSlug, artUrl) {
-    const _slug = this.normalizeChamberSlug(chamberSlug)
-    console.log(`QuestMetadataDocBase.updateArtUrl() [${type}]`, _slug, artUrl)
-    store.upsertDocument(type, _slug, {
+  static updateArtUrl(store, type, key, artUrl) {
+    console.log(`QuestMetadataDocBase.updateArtUrl() [${type}]`, key, artUrl)
+    store.upsertDocument(type, key, {
       artUrl
     })
   }
@@ -32,31 +30,35 @@ class QuestMetadataDocBase {
 
 class QuestRealmDoc extends QuestMetadataDocBase {
   static type = 'questRealm'
-  static updateMetadata(store, chamberSlug, metadata) {
-    super.updateMetadata(store, QuestRealmDoc.type, chamberSlug, metadata)
+  static updateMetadata(store, realmCoord, metadata) {
+    super.updateMetadata(store, QuestRealmDoc.type, realmCoord, metadata)
   }
-  static updateArtUrl(store, chamberSlug, artUrl) {
-    super.updateArtUrl(store, QuestRealmDoc.type, chamberSlug, artUrl)
+  static updateArtUrl(store, realmCoord, artUrl) {
+    super.updateArtUrl(store, QuestRealmDoc.type, realmCoord, artUrl)
   }
 }
 
 class QuestChamberDoc extends QuestMetadataDocBase {
   static type = 'questChamber'
-  static updateMetadata(store, chamberSlug, metadata) {
-    super.updateMetadata(store, QuestChamberDoc.type, chamberSlug, metadata)
+  static updateMetadata(store, realmCoord, chamberSlug, metadata) {
+    const key = super.makeChamberKey(realmCoord, chamberSlug)
+    super.updateMetadata(store, QuestChamberDoc.type, key, metadata)
   }
-  static updateArtUrl(store, chamberSlug, artUrl) {
-    super.updateArtUrl(store, QuestChamberDoc.type, chamberSlug, artUrl)
+  static updateArtUrl(store, realmCoord, chamberSlug, artUrl) {
+    const key = super.makeChamberKey(realmCoord, chamberSlug)
+    super.updateArtUrl(store, QuestChamberDoc.type, key, artUrl)
   }
 }
 
 class QuestAgentDoc extends QuestMetadataDocBase {
   static type = 'questAgent'
-  static updateMetadata(store, chamberSlug, metadata) {
-    super.updateMetadata(store, QuestAgentDoc.type, chamberSlug, metadata)
+  static updateMetadata(store, realmCoord, chamberSlug, metadata) {
+    const key = super.makeChamberKey(realmCoord, chamberSlug)
+    super.updateMetadata(store, QuestAgentDoc.type, key, metadata)
   }
-  static updateArtUrl(store, chamberSlug, artUrl) {
-    super.updateArtUrl(store, QuestAgentDoc.type, chamberSlug, artUrl)
+  static updateArtUrl(store, realmCoord, chamberSlug, artUrl) {
+    const key = super.makeChamberKey(realmCoord, chamberSlug)
+    super.updateArtUrl(store, QuestAgentDoc.type, key, artUrl)
   }
 }
 
