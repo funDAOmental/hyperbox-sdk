@@ -41,11 +41,11 @@ class QuestRealmDoc extends QuestMetadataDocBase {
 class QuestChamberDoc extends QuestMetadataDocBase {
   static type = 'questChamber'
   static updateMetadata(store, realmCoord, chamberSlug, metadata) {
-    const key = super.makeChamberKey(realmCoord, chamberSlug)
+    const key = QuestMetadataDocBase.makeChamberKey(realmCoord, chamberSlug)
     super.updateMetadata(store, QuestChamberDoc.type, key, metadata)
   }
   static updateArtUrl(store, realmCoord, chamberSlug, artUrl) {
-    const key = super.makeChamberKey(realmCoord, chamberSlug)
+    const key = QuestMetadataDocBase.makeChamberKey(realmCoord, chamberSlug)
     super.updateArtUrl(store, QuestChamberDoc.type, key, artUrl)
   }
 }
@@ -53,16 +53,17 @@ class QuestChamberDoc extends QuestMetadataDocBase {
 class QuestAgentDoc extends QuestMetadataDocBase {
   static type = 'questAgent'
   static updateMetadata(store, realmCoord, chamberSlug, metadata) {
-    const key = super.makeChamberKey(realmCoord, chamberSlug)
+    const key = QuestMetadataDocBase.makeChamberKey(realmCoord, chamberSlug)
     super.updateMetadata(store, QuestAgentDoc.type, key, metadata)
   }
   static updateArtUrl(store, realmCoord, chamberSlug, artUrl) {
-    const key = super.makeChamberKey(realmCoord, chamberSlug)
+    const key = QuestMetadataDocBase.makeChamberKey(realmCoord, chamberSlug)
     super.updateArtUrl(store, QuestAgentDoc.type, key, artUrl)
   }
 }
 
 export {
+  QuestMetadataDocBase,
   QuestRealmDoc,
   QuestChamberDoc,
   QuestAgentDoc,
